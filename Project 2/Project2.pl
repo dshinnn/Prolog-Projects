@@ -27,17 +27,20 @@ Part B:
 
 predecessor(X,Y) :- X=s(Y), X\=z.
 successor(X,Y) :- Y=s(X).
+
 numeral(z, 0).
 numeral(s(X),Y) :- numeral(X,Z), Y is +(Z,1).
+
 addition(z,Y,Y).
 addition(s(X),Y,s(Z)) :- addition(X,Y,Z).
+
 subtraction(X,z,X).
 subtraction(s(X),s(Y),Z) :- subtraction(X,Y,Z).
+
 multiplication(X,Y,Z) :- numeral(X,A), numeral(Y,B), T is A*B, numeral(Z,T), !.
 
-// Factorial is work is progress
-factorial(s(z),s(z)).
-factorial(X,Z) :- multiplication(X, P, Z), predecessor(X, P), factorial(P, Z). 
+factorial(z,s(z)).
+factorial(X,Z) :- predecessor(X,P), factorial(P,Y), multiplication(X,Y,Z). 
 
 equal(X,Y) :- X=Y.
 greater(X,Y) :- X>Y.
