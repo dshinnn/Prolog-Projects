@@ -1,0 +1,41 @@
+male(abraham).
+male(herb).
+male(homer).
+male(bob).
+male(joe).
+male(clancy).
+male(bart).
+male(ling).
+female(mona).
+female(jackeline).
+female(marge).
+female(patty).
+female(selma).
+female(lisa).
+female(maggie).
+female(sharon).
+female(love).
+
+
+parent(abraham, herb).
+parent(abraham, homer).
+parent(mona, herb).
+parent(mona, homer).
+parent(clancy, marge).
+parent(clancy, patty).
+parent(clancy, selma).
+parent(jackeline, marge).
+parent(jackeline, patty).
+parent(jackeline, selma).
+parent(selma, ling).
+parent(homer, bart).
+parent(homer, lisa).
+parent(homer, maggie).
+parent(marge, bart).
+parent(marge, lisa).
+parent(marge, maggie).
+
+parent(bob, abraham).
+parent(joe, clancy).
+parent(sharon, abraham).
+parent(love, clancy).
