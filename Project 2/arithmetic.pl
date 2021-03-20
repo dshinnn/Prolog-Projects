@@ -16,5 +16,5 @@ factorial(z,s(z)).
 factorial(X,Z) :- predecessor(X,P), factorial(P,Y), multiplication(X,Y,Z). 
 
 equal(X,Y) :- X=Y.
-greater(X,Y) :- X>Y.
-less(X,Y) :- X<Y.
+greater(X,Y) :- numeral(X,Z), numeral(Y,V), Z > V.
+less(X,Y) :- numeral(X,Z), numeral(Y,V), Z < V.
