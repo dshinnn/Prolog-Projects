@@ -11,3 +11,7 @@ subset([], _).
 subset([H|T], L) :- member(H, L), subset(T, L).
 double([], []).
 double([H|T], [X|T2]) :- X is *(H,2), double(T, T2).
+intersection([], _, []).
+intersection([H|T], L2, [H|T2]) :- member(H,L2), intersection(T, L2, T2). 
+intersection([_|T], L2, T2) :- intersection(T, L2, T2).
+union(L1, L2, L) :- append(L1, L2, X), sort(X, L).
