@@ -1,0 +1,13 @@
+append([],L2,L2).
+append([H|T], L2, [H|L3]) :- append(T,L2,L3).
+member(X, [X|_]).
+member(X, [_|T]) :- member(X,T).
+last(X, [X|[]]).
+last(X, [_|T]) :- last(X,T).
+delete(_, [], []).
+delete(X, [X|T], T) :- !.
+delete(X, [H|T], [H|T2]) :- delete(X, T, T2).
+subset([], _).
+subset([H|T], L) :- member(H, L), subset(T, L).
+double([], []).
+double([H|T], [X|T2]) :- X is *(H,2), double(T, T2).
