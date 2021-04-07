@@ -1,0 +1,17 @@
+/* #Test facts */
+tim(tall).
+tim(bald).
+
+/* #Test cases */
+TRUE: 
+tim(tall) and tim(bald).
+tim(tall) or tim(hair).
+if tim(tall) then tim(bald).
+if tim(short) then tim(bald).
+
+/* #FALSE: */
+tim(short) and tim(bald).
+tim(tall) and tim(hair).
+tim(short) or tim(hair).
+if tim(short) then tim(bald).
+if tim(tall) then tim(hair).
