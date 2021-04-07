@@ -12,6 +12,13 @@ enter_facts:-
     write('Is the window closed? t/f/m:'), read(X3), assert(fact(X3, window_closed)),
     write('It is not raining? t/f/m:'), read(X4), assert(fact(X4, no_rain)).
 
+
+forward :- 
+	derived_fact(fact(m,P)), !,
+	write('Derived-'), write(P),
+	write(':'), write('\t'), write('maybe'),
+	nl, assert(fact(m,P)), forward.
+
 forward :- 
 	derived_fact(fact(t,P)), !,
 	write('Derived-'), write(P),
@@ -19,9 +26,13 @@ forward :-
 	nl, assert(fact(t,P)), forward;
 	write('No more facts').
 
+derived_fact(fact(m, CONCL)) :- 
+	if COND then CONCL,
+	not(fact(m,CONCL)), composed_fact(fact(m,COND)).
+
 derived_fact(fact(t, CONCL)) :- 
 	if COND then CONCL,
-	not(fact(t,CONCL)), composed_fact(fact(t,COND)).	
+	not(fact(t,CONCL)), composed_fact(fact(t,COND)).
 
 composed_fact(fact(t,COND)) :- fact(t,COND).
 
@@ -32,6 +43,24 @@ composed_fact(fact(t,COND1 and COND2)) :-
 composed_fact(fact(t,COND1 or COND2)) :-
 	composed_fact(fact(t,COND1));
 	composed_fact(fact(t,COND2)).
+
+composed_fact(fact(m,COND)) :- fact(m,COND).
+
+composed_fact(fact(m,COND1 and COND2)) :-
+	composed_fact(fact(m,COND1)),
+	composed_fact(fact(m,COND2)).
+
+composed_fact(fact(m,COND1 and COND2)) :-
+	composed_fact(fact(m,COND1)),
+	composed_fact(fact(t,COND2)).
+
+composed_fact(fact(m,COND1 or COND2)) :-
+	composed_fact(fact(m,COND1));
+	composed_fact(fact(f,COND2)).
+
+composed_fact(fact(m,COND1 or COND2)) :-
+	composed_fact(fact(m,COND1));
+	composed_fact(fact(m,COND2)).
 
 and(X,Y) :- X,Y.
 or(X,Y) :- X;Y.

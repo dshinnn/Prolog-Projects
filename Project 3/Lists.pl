@@ -1,4 +1,3 @@
-Part A:
 append([],L2,L2).
 append([H|T], L2, [H|L3]) :- append(T,L2,L3).
 member(X, [X|_]).
@@ -16,13 +15,3 @@ intersection([], _, []).
 intersection([H|T], L2, [H|T2]) :- member(H,L2), intersection(T, L2, T2). 
 intersection([_|T], L2, T2) :- intersection(T, L2, T2).
 union(L1, L2, L) :- append(L1, L2, X), sort(X, L).
-
-Part B:
-start:-abolish(fact/2), enter_facts, forward.
-
-enter_facts:-
-    write('Is the hall wet? t/f/m:'), read(X),  assert(fact(X, hall_wet)),
-    write('Is the kitchen dry? t/f/m:'), read(X1), assert(fact(X1, kitchen_dry)),
-    write('Is the bathroom dry? t/f/m:'), read(X2), assert(fact(X2, bathroom_dry)),
-    write('Is the window closed? t/f/m:'), read(X3), assert(fact(X3, window_closed)),
-    write('It is not raining? t/f/m:'), read(X4), assert(fact(X4, no_rain)).
