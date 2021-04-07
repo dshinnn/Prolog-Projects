@@ -23,6 +23,6 @@ if problem_in_kitchen and no_water_from_outside then leak_in_kitchen.
 
 To complete this project, we had to 
 
-1) define the following operators : if, then, and, or
+a) define the following operators : if, then, and, or
 b) be able to consult the rules presented below using the defined operators 
 c) list the derived facts (with confidence indicators true or maybe)based on user input. 
