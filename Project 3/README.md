@@ -13,6 +13,7 @@ intersection(L1, L2, I). % I contains integers that are present in L1 and L2
 union(L1, L2, U).  %U contains all integers present in L1 and L2 without duplicates 
 
 LeakExpert.pl
+
 For this project we had to write a simple expert system that takes in user input to determine what facts can be derived based on user input.This project is based on the leak finding expert scenario discussed in our Expert System class. The expert system is supposed to derive facts based on the following rules:
 
 if hall_wet and kitchen_dry then leak_in_bathroom.

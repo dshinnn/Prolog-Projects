@@ -1,3 +1,4 @@
+:- dynamic(fact/2).
 :- op(500, xfy, and).
 :- op(600, xfy, or).
 :- op(700, fx, if).
@@ -51,12 +52,20 @@ composed_fact(fact(m,COND1 and COND2)) :-
 	composed_fact(fact(m,COND2)).
 
 composed_fact(fact(m,COND1 and COND2)) :-
+	composed_fact(fact(t,COND1)),
+	composed_fact(fact(m,COND2)).
+
+composed_fact(fact(m,COND1 and COND2)) :-
 	composed_fact(fact(m,COND1)),
 	composed_fact(fact(t,COND2)).
 
 composed_fact(fact(m,COND1 or COND2)) :-
 	composed_fact(fact(m,COND1));
 	composed_fact(fact(f,COND2)).
+
+composed_fact(fact(m,COND1 or COND2)) :-
+	composed_fact(fact(f,COND1));
+	composed_fact(fact(m,COND2)).
 
 composed_fact(fact(m,COND1 or COND2)) :-
 	composed_fact(fact(m,COND1));
